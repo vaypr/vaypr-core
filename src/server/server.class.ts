@@ -32,7 +32,7 @@ export class VayprServer {
     this.app.get('/', (req, res) => res.redirect('/health'));
   }
 
-  start() {
+  async start() {
     logger.info('starting server');
     this.httpServer = http.createServer(this.app);
     this.httpServer.on('error', this.handleError);

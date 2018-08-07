@@ -1,4 +1,5 @@
 export * from './application';
+export * from './bootstrap';
 // export * from './controllers';
 // export * from './helpers';
 export * from './resolvers';
