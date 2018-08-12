@@ -1,4 +1,4 @@
-import { id } from '../types';
+// import { id } from '../types';
 
 import { VayprError } from './error.class';
 import { } from './error.factory';

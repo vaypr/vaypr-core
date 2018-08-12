@@ -14,7 +14,7 @@ export class VayprServer {
   constructor(
     private config: VayprServerConfig
   ) {
-    this.app = express();
+    this.app = this.express();
     this.init();
   }
 
