@@ -23,26 +23,24 @@ export abstract class VayprApplication {
     this.server = new VayprServer({
       port: this.config.port
     });
-    await Promise.all([
-      this.addBuiltInRoutes(),
-      this.addMyRoutes()
-    ])
+    this.addBuiltInRoutes();
+    this.addMyRoutes();
     await this.server.start();
   }
 
-  protected async addRoutes(routes: VayprRouter[]) {
+  protected addRoutes(routes: VayprRouter[]) {
     routes.forEach(router => {
       this.server.addRouter(router.baseRoute, router.router);
     });
   }
 
-  private async addBuiltInRoutes() {
-    await this.addRoutes((await bootstrapRouters(builtInRoutes)));
+  private addBuiltInRoutes() {
+    this.addRoutes(bootstrapRouters(builtInRoutes));
   }
 
-  private async addMyRoutes() {
+  private addMyRoutes() {
     if (this.routers) {
-      await this.addRoutes((await bootstrapRouters(this.routers)));
+      this.addRoutes(bootstrapRouters(this.routers));
     }
   }
 }

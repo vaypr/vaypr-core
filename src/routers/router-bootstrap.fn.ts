@@ -10,12 +10,12 @@ export const bootsrapRoutesDefaultOptions: BootstrapRoutesOptions = {
   swallowErrors: true
 }
 
-export async function bootstrapRouters<T extends VayprRouter>(
+export function bootstrapRouters<T extends VayprRouter>(
   routers: Descendant<T>[], 
   options: BootstrapRoutesOptions = bootsrapRoutesDefaultOptions
-): Promise<T[]> {
+): T[] {
   try {
-    const routes = await Promise.all(routers.map(router => bootstrapRouter(router)));
+    const routes = routers.map(router => bootstrapRouter(router));
     return routes ? routes.filter(route => !!route) : [];
   } catch(err) {
     logger.error(err);
@@ -26,7 +26,7 @@ export async function bootstrapRouters<T extends VayprRouter>(
   }
 }
 
-export async function bootstrapRouter<T extends VayprRouter>(Router: Descendant<T>): Promise<T> {
+export function bootstrapRouter<T extends VayprRouter>(Router: Descendant<T>): T {
   try {
     if (Router.constructor) {
       const route = new Router();
