@@ -1,7 +1,7 @@
 import * as express from 'express';
 
 import { get } from '../../route-methods.constants';
-import { VayprRouter } from '../../router.class';
+import { VayprRouter } from '../../router.definition';
 
 const upDate = new Date();
 

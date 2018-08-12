@@ -1,5 +1,5 @@
 import { Descendant } from '../utilities';
-import { VayprRouter } from './router.class';
+import { VayprRouter } from './router.definition';
 import { logger } from '../utilities';
 
 export interface BootstrapRoutesOptions {

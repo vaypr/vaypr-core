@@ -1,6 +1,6 @@
 {
   "name": "@vaypr/core",
-  "version": "0.0.1-prealpha",
+  "version": "0.0.2-prealpha",
   "description": "An opiniated framework for node.js backend applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

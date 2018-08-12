@@ -4,4 +4,4 @@ export * from './route-methods.constants';
 export * from './route-methods.enum';
 export * from './route.definition';
 export * from './router-bootstrap.fn';
-export * from './router.class';
+export * from './router.definition';
