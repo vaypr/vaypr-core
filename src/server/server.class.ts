@@ -44,8 +44,8 @@ export class VayprServer {
     logger.error('Application error: ', err);
   }
 
-  addRouter(router: express.Router) {
-    this.app.use('/', router);
+  addRouter(path: string, router: express.Router) {
+    this.app.use(path, router);
   }
 
   addMiddleWare(middleWare: any) {

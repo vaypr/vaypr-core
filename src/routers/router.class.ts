@@ -13,7 +13,7 @@ export abstract class VayprRouter {
   }
 
   initRoutes() {
-    logger.info('initializing routes for ' + this.constructor.name);
+    logger.info('initializing ' + this.routes.length + ' routes for ' + this.constructor.name);
     this.routes.forEach(route => this.addRoute(route));
   }
 

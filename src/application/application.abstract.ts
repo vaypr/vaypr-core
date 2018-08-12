@@ -4,7 +4,7 @@ import { VayprAppplicationConfig } from './application-config.interface';
 import { VayprServer } from '../server';
 import { VayprService } from '../services';
 import { bootstrapRouters, builtInRoutes, VayprRouter } from '../routers';
-import { Descendant, logger } from '../utilities';
+import { Descendant } from '../utilities';
 
 export abstract class VayprApplication {
   // the configuration value for the application.
@@ -32,8 +32,7 @@ export abstract class VayprApplication {
 
   protected async addRoutes(routes: VayprRouter[]) {
     routes.forEach(router => {
-      logger.info('adding router', router.baseRoute);
-      this.server.addRouter(router.router);
+      this.server.addRouter(router.baseRoute, router.router);
     });
   }
 
