@@ -3,13 +3,14 @@ import * as express from 'express';
 // import * as morgan from 'morgan';
 import * as bodyParser from 'body-parser';
 
-import { logger } from '../utilities';
+import { logger, VayprError, VayprErrorHelper } from '../utilities';
 import { VayprServerConfig } from './server-config.interface';
 
 export class VayprServer {
   private express = express;
   public app: express.Application;
   private httpServer: http.Server;
+  private errorHelper: VayprErrorHelper;
 
   constructor(
     private config: VayprServerConfig
@@ -35,13 +36,17 @@ export class VayprServer {
   async start() {
     logger.info('starting server');
     this.httpServer = http.createServer(this.app);
+    this.errorHelper = new VayprErrorHelper(this.httpServer);
     this.httpServer.on('error', this.handleError);
     this.httpServer.listen(this.config.port);
     logger.info('server started on ' + this.config.port);
   }
 
-  private handleError(err: string | Error) {
-    logger.error('Application error: ', err);
+  private handleError(err: VayprError) {
+    if (!(err instanceof VayprError)) {
+      err = new VayprError(err, 'NORMAL');
+    }
+    this.errorHelper.process(err);
   }
 
   addRouter(path: string, router: express.Router) {

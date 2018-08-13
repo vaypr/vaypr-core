@@ -44,6 +44,7 @@
   },
   "dependencies": {
     "express": "^4.16.3",
+    "uuid": "^3.3.2",
     "winston": "^2.4.3"
   }
 }

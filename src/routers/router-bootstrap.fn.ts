@@ -1,6 +1,5 @@
-import { Descendant } from '../utilities';
+import { Descendant, VayprError } from '../utilities';
 import { VayprRouter } from './router.definition';
-import { logger } from '../utilities';
 
 export interface BootstrapRoutesOptions {
   swallowErrors: boolean;
@@ -18,10 +17,8 @@ export function bootstrapRouters<T extends VayprRouter>(
     const routes = routers.map(router => bootstrapRouter(router));
     return routes ? routes.filter(route => !!route) : [];
   } catch(err) {
-    logger.error(err);
-    if (!options.swallowErrors) {
-      throw new Error(err);
-    }
+    const error = options.swallowErrors ? new VayprError(err) : new VayprError(err, 'CRASH');
+    throw error;
     return [];
   }
 }
