@@ -1,7 +1,8 @@
+import * as bodyParser from 'body-parser';
 import * as http from 'http';
 import * as express from 'express';
-// import * as morgan from 'morgan';
-import * as bodyParser from 'body-parser';
+import * as morgan from 'morgan';
+
 
 import { logger, VayprError, VayprErrorHelper } from '../utilities';
 import { VayprServerConfig } from './server-config.interface';
@@ -27,6 +28,8 @@ export class VayprServer {
   private addDefaultMiddleWare() {
     this.addMiddleWare(bodyParser.urlencoded({ 'extended': true }));
     this.addMiddleWare(bodyParser.json());
+    // TODO: wrap morgan in winston for logging?
+    this.addMiddleWare(morgan('dev'));
   }
 
   private addDefaultRoutes() {

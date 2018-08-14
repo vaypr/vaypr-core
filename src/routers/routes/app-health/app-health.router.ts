@@ -1,18 +1,13 @@
 import * as express from 'express';
-
-import { get } from '../../route-methods.constants';
+import { VayprRoute } from '../../route.definition';
 import { VayprRouter } from '../../router.definition';
 
 const upDate = new Date();
 
 export class AppHealthRouter extends VayprRouter {
-  baseRoute = '/health';
+  path = '/health';
   routes = [
-    {
-      method: get,
-      path: '/',
-      handlers: [this.healthRoute]
-    }
+    new VayprRoute('get', '/', this.healthRoute)
   ];
 
   async healthRoute(req: express.Request, res: express.Response) {

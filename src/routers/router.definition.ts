@@ -4,7 +4,7 @@ import { VayprRoute } from './route.definition';
 import { logger } from '../utilities';
 
 export abstract class VayprRouter {
-  abstract baseRoute: string;
+  abstract path: string;
   abstract routes: VayprRoute[];
   public router: Router;
 
@@ -18,6 +18,13 @@ export abstract class VayprRouter {
   }
 
   addRoute(route: VayprRoute) {
-    this.router[route.method](route.path, ...route.handlers);
+    if (Array.isArray(route.handlers)) {
+      console.log('handlers', route.handlers);
+      for(let i = 0; i < route.handlers.length; i++) {
+        this.router[route.method](route.path, route.handlers[i]);
+      }
+    } else {
+      this.router[route.method](route.path, route.handlers);
+    }
   }
 }

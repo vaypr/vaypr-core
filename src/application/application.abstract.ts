@@ -6,6 +6,12 @@ import { VayprService } from '../services';
 import { bootstrapRouters, builtInRoutes, VayprRouter } from '../routers';
 import { Descendant } from '../utilities';
 
+/**
+ * An application is a class or object for describing a Vaypr application.
+ * It contains properties for configuration, the server, services, middleware,
+ * and routers.
+ */
+
 export abstract class VayprApplication {
   // the configuration value for the application.
   abstract config: VayprAppplicationConfig;
@@ -30,7 +36,7 @@ export abstract class VayprApplication {
 
   protected addRoutes(routes: VayprRouter[]) {
     routes.forEach(router => {
-      this.server.addRouter(router.baseRoute, router.router);
+      this.server.addRouter(router.path, router.router);
     });
   }
 

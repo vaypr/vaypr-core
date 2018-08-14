@@ -3,6 +3,7 @@
     "alwaysStrict": true,
     "module": "commonjs",
     "emitDecoratorMetadata": true,
+    "declaration": true,
     "experimentalDecorators": true,
     "noUnusedLocals": true,
     "strictNullChecks": true,
