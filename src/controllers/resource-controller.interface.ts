@@ -1,7 +1,7 @@
-import { ResolverFunction } from './resolver-fn.interface';
+import { ControllerFunction } from './controller-fn.interface';
 
 /**
- * A resolver is a type of class or object that resolves data for the graphQL / REST interfaces by retrieving
+ * A controller is a type of class or object that resolves data for the graphQL / REST interfaces by retrieving
  * data from a database, cache, or file storage layer.
  * @note Use this resolver if you have a resource or more then one CRUD operation in your resolver. Use the Resolver
  * for resolvers that perform only one CRUD operation.
@@ -16,10 +16,10 @@ import { ResolverFunction } from './resolver-fn.interface';
  *   }
  * }
  */
-export interface ResourceResolver<T> {
-  index?: ResolverFunction<T[]>;
-  create?: ResolverFunction<T>;
-  read?: ResolverFunction<T>;
-  update?: ResolverFunction<T>;
-  delete?: ResolverFunction<T>;
+export interface ResourceController<T> {
+  index?: ControllerFunction<T[]>;
+  create?: ControllerFunction<T>;
+  read?: ControllerFunction<T>;
+  update?: ControllerFunction<T>;
+  delete?: ControllerFunction<T>;
 }

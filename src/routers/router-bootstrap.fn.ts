@@ -1,5 +1,5 @@
 import { Descendant, VayprError } from '../utilities';
-import { VayprRouter } from './router.definition';
+import { Router } from './router.definition';
 
 export interface BootstrapRoutesOptions {
   swallowErrors: boolean;
@@ -9,7 +9,7 @@ export const bootsrapRoutesDefaultOptions: BootstrapRoutesOptions = {
   swallowErrors: true
 }
 
-export function bootstrapRouters<T extends VayprRouter>(
+export function bootstrapRouters<T extends Router>(
   routers: Descendant<T>[], 
   options: BootstrapRoutesOptions = bootsrapRoutesDefaultOptions
 ): T[] {
@@ -23,7 +23,7 @@ export function bootstrapRouters<T extends VayprRouter>(
   }
 }
 
-export function bootstrapRouter<T extends VayprRouter>(Router: Descendant<T>): T {
+export function bootstrapRouter<T extends Router>(Router: Descendant<T>): T {
   try {
     if (Router.constructor) {
       const route = new Router();

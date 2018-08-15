@@ -1,9 +1,9 @@
 import { RequestHandler } from 'express';
 
-import { VayprAppplicationConfig } from './application-config.interface';
-import { VayprServer } from '../server';
-import { VayprService } from '../services';
-import { bootstrapRouters, builtInRoutes, VayprRouter } from '../routers';
+import { AppplicationConfig } from './application-config.interface';
+import { Server } from '../server';
+import { Service } from '../services';
+import { bootstrapRouters, builtInRoutes, Router } from '../routers';
 import { Descendant } from '../utilities';
 
 /**
@@ -12,21 +12,28 @@ import { Descendant } from '../utilities';
  * and routers.
  */
 
-export abstract class VayprApplication {
+export abstract class Application {
   // the configuration value for the application.
-  abstract config: VayprAppplicationConfig;
+  abstract config: AppplicationConfig;
   // the application's server.
-  public server: VayprServer;
+  public server: Server;
   // an arry for your classes that extend VayprService
-  protected services: Descendant<VayprService>[];
+  protected services: Descendant<Service>[];
   // middleware to your application
   protected middleWare: RequestHandler[];
   // default application routes (not attached to a service)
-  protected routers: Descendant<VayprRouter>[];
+  protected routers: Descendant<Router>[];
+
+  /**
+   * TODO: flesh this out so people can use object composition rather then class extension
+   */
+  // static create(application: VayprApplication) {
+  //   return class extends
+  // }
 
   // start the application
   public async run() {
-    this.server = new VayprServer({
+    this.server = new Server({
       port: this.config.port
     });
     this.addBuiltInRoutes();
@@ -34,7 +41,7 @@ export abstract class VayprApplication {
     await this.server.start();
   }
 
-  protected addRoutes(routes: VayprRouter[]) {
+  protected addRoutes(routes: Router[]) {
     routes.forEach(router => {
       this.server.addRouter(router.path, router.router);
     });

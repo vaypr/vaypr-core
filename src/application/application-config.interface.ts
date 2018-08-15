@@ -1,5 +1,5 @@
-import { VayprSharedConfig } from '../utilities';
+import { SharedConfig } from '../utilities';
 
-export interface VayprAppplicationConfig extends VayprSharedConfig {
+export interface AppplicationConfig extends SharedConfig {
   useXML?: boolean;
 }

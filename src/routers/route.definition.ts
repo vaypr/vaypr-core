@@ -1,7 +1,7 @@
 import { RequestHandler } from 'express';
 import { RouteMethod } from './route-method.type';
 
-export class VayprRoute {
+export class Route {
   // TODO: make this easier to use in TS without new
   constructor(
     public method: RouteMethod,

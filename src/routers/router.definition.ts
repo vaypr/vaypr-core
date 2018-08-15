@@ -1,15 +1,15 @@
-import { Router } from 'express';
+import * as express from 'express';
 
-import { VayprRoute } from './route.definition';
+import { Route } from './route.definition';
 import { logger } from '../utilities';
 
-export abstract class VayprRouter {
+export abstract class Router {
   abstract path: string;
-  abstract routes: VayprRoute[];
-  public router: Router;
+  abstract routes: Route[];
+  public router: express.Router;
 
   constructor() {
-    this.router = Router();
+    this.router = express.Router();
   }
 
   initRoutes() {
@@ -17,7 +17,7 @@ export abstract class VayprRouter {
     this.routes.forEach(route => this.addRoute(route));
   }
 
-  addRoute(route: VayprRoute) {
+  addRoute(route: Route) {
     if (Array.isArray(route.handlers)) {
       console.log('handlers', route.handlers);
       for(let i = 0; i < route.handlers.length; i++) {

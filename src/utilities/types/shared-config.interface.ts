@@ -1,4 +1,4 @@
-export interface VayprSharedConfig {
+export interface SharedConfig {
   port: number;
   neverCrash?: boolean;
 }

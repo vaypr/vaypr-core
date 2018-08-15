@@ -1,6 +1,6 @@
 {
   "name": "@vaypr/core",
-  "version": "0.0.2-prealpha",
+  "version": "0.0.3-prealpha",
   "description": "An opiniated framework for node.js backend applications.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -45,6 +45,9 @@
   "dependencies": {
     "express": "^4.16.3",
     "morgan": "^1.9.0",
+    "reflect-metadata": "^0.1.12",
+    "sequelize": "^4.38.0",
+    "sequelize-typescript": "^0.6.6",
     "uuid": "^3.3.2",
     "winston": "^2.4.3"
   }

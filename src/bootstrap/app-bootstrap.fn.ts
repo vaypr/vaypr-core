@@ -1,7 +1,7 @@
-import { VayprApplication } from '../application';
+import { Application } from '../application';
 import { Descendant, logger, VayprError } from '../utilities';
 
-export async function bootstrapApplication<T extends VayprApplication>(App: Descendant<T>): Promise<void> {
+export async function bootstrapApplication<T extends Application>(App: Descendant<T>): Promise<void> {
   try {
     if (App.constructor) {
       const startTime = new Date();

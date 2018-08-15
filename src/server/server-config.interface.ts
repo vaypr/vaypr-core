@@ -1,5 +1,5 @@
-import { VayprSharedConfig } from '../utilities/types';
+import { SharedConfig } from '../utilities/types';
 
-export interface VayprServerConfig extends VayprSharedConfig {
+export interface ServerConfig extends SharedConfig {
   
 }

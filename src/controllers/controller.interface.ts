@@ -1,4 +1,4 @@
-import { ResolverFunction } from './resolver-fn.interface';
+import { ControllerFunction } from './controller-fn.interface';
 
 /**
  * A resolver is a type of class or object that resolves data for the graphQL / REST interfaces by retrieving
@@ -11,6 +11,6 @@ import { ResolverFunction } from './resolver-fn.interface';
  * }
  * }
  */
-export interface Resolver<T> {
-  resolve: ResolverFunction<T>;
+export interface Controller<T> {
+  resolve: ControllerFunction<T>;
 }

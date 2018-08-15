@@ -5,16 +5,16 @@ import * as morgan from 'morgan';
 
 
 import { logger, VayprError, VayprErrorHelper } from '../utilities';
-import { VayprServerConfig } from './server-config.interface';
+import { ServerConfig } from './server-config.interface';
 
-export class VayprServer {
+export class Server {
   private express = express;
   public app: express.Application;
   private httpServer: http.Server;
   private errorHelper: VayprErrorHelper;
 
   constructor(
-    private config: VayprServerConfig
+    private config: ServerConfig
   ) {
     this.app = this.express();
     this.init();
